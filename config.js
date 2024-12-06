@@ -1,64 +1,18 @@
 let topTitleDiv =
   '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + 
-  "<h4 style='font-size: 30px; margin-bottom: 40px'>2024 Fall &nbsp | &nbsp Data Visualization &nbsp | &nbsp Final Project</h4>" +
-  "<h1 style='font-size: 80px;'>Apartment Energy Usage and Property Prices in New York</h1>" +
-  "<h5 style='font-size: 50px;'>John Masataka Jiang";
-
-// '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' +
-
-// let topTitleDiv =`
-// <div class="question-bg">
-//   <div>
-//     <h4>2024 Fall &nbsp | &nbsp Data Visualization &nbsp | &nbsp Final Project</h4>
-//   </div>
-//   <div>
-//     <h1>NYC Apartment Energy Usage and Property Prices</h1>
-//   </div>
-//   <div>
-//     <h5>By John Masataka Jiang  &nbsp | &nbsp  Instructor: Jia Zhang  &nbsp | &nbsp  Columbia University GSAPP</h5>
-//   </div>
-// </div>`;
-
-// let titleDiv =
-//   "<h1>NYC Apartment Energy Usage and Property Prices</h1>";
-
-// let bylineDiv = "<h5>By John Masataka Jiang  &nbsp | &nbsp  Instructor: Jia Zhang  &nbsp | &nbsp  Columbia University GSAPP</h5>";
-
-// let headerContent = `
-// <div class="topTitle-bg">
-//   <div style="margin-top: 100px;">  
-//     <h4>2024 Fall &nbsp;|&nbsp; Data Visualization &nbsp;|&nbsp; Final Project</h4>
-//     <h1>NYC Apartment Energy Usage and Property Prices</h1>
-//     <h5>By John Masataka Jiang &nbsp;|&nbsp; Instructor: Jia Zhang &nbsp;|&nbsp; Columbia University GSAPP</h5>
-//   </div>
-// </div>`;
-
-// let question = `
-// <div class="question-bg">
-//   <h1 style="font-size: 50px;">When you rent or purchase an apartment, have you ever imagined how much energy your unit will cost?</h1>
-// </div>`;
+  "<h4 style='font-size: 2.0em; margin-bottom: 40px'>2024 Fall &nbsp | &nbsp Data Visualization &nbsp | &nbsp Final Project</h4>" +
+  "<h1 style='font-size: 5.0em;'>Apartment Energy Usage and Property Prices in New York</h1>" +
+  "<h5 style='font-size: 3.0em;'>John Masataka Jiang";
 
 let question = 
-  '<h1 style="font-size: 50px;">When you rent or purchase an apartment, have you ever imagined how much electricity and natural gas your unit will cost?</h1>';
+  '<h1 style="font-size: 3.0em;">When you rent or purchase an apartment, have you ever imagined how much electricity and natural gas your unit will cost?</h1>';
 
 let descriptionDiv =
-  // '<p>This project aims to uncover and visualize the correlations between annual energy usage per square foot and the price per square foot of apartments across New York City. </p>' +
-
-  // "<p>By doing so, we seek to provide potential renters, buyers, and policymakers with a clearer understanding of energy efficiency's impact on living costs and identify trends that could inform future urban planning and sustainability initiatives</p>" + 
-
   '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' +
 
   question ;
 
-  //'<p>Data Sources 1: Annual energy usage per square foot for apartments in NYC</p>' +
-  //'<p>Data Sources 2: Price per square foot for apartments in NYC</p>' +
-
-  // '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' +
-
-  // "<p style='text-align:center'>Welcome to New York! <br>▼</p>";
-
 let footerDiv =
-  // '<p>This story is based on data by the <a href="http://placeholder.html">PlaceHolder Authority</a> and <a href="http://placeholder.html">PlaceHolder Authority</a>.</p>' +
   '<p>2024 Fall | Data Visualization | Final Project | Author: John Masataka Jiang | Instructor: Jia Zhang</p>';
 
 let divChapter1 =
@@ -67,15 +21,13 @@ let divChapter1 =
 
 let divChapter2 =
   "<h3>Property Price Per Square Foot for Each Apartment in New York</h3>" ;
-  // '<img src="images/price.jpg">' +
-  // "<p>PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, </p>";
 
 let divChapter3 =
   "<h3>Cluster Chart: Annual Electricity Usage / Property Price</h3>" +
   '<iframe src="cluster_electricity_price.html" style="border: none; width: 1000px; height: 1000px;"></iframe>' ;
 
 let divChapter4a =
-  "<h3 style = 'font-size: 27.5px'>Case Study: An Expensive Apartment with Low Electricity Usage</h3>" +
+  "<h3 style = 'font-size: 2.0em'>Case Study: An Expensive Apartment with Low Electricity Usage</h3>" +
   '<img src="images/900 Fifth Avenue_2.webp">' + 
   '<img src="images/900 Fifth Avenue_3.webp">' + 
   "<p style='max-width:600px;'>· Property: 900 Fifth Avenue</p>"+ 
@@ -93,7 +45,7 @@ let divChapter4a =
   "<p style='max-width:600px;'>· In the 2000s, 900 Fifth Avenue received financing for renovations and interior upgrades, including an HVAC system upgrade. Additionally, the building has fewer high-electricity-consuming amenities (like large commercial kitchens, extensive outdoor lighting, pools, etc.). According to online reviews, some units used as second homes or investment properties that are often vacant, leading to low electricity consumption.</p>" ; 
 
 let divChapter4b =
-  "<h3 style = 'font-size: 27.5px'>Case Study: A Cheap Apartment with High Electricity Usage</h3>" +
+  "<h3 style = 'font-size: 2.0em'>Case Study: A Cheap Apartment with High Electricity Usage</h3>" +
   '<img src="images/1145 President St_1.png">' +
   '<img src="images/1145 President St_2.webp">' +
   "<p style='max-width:600px;'>· Property: 1145 President St</p>"+ 
@@ -182,24 +134,17 @@ let divChapter5b = `
 
 let divChapter6 =
   "<h3>Chapter 2: Annual Natural Gas Usage Per Square Foot for Each Apartment in New York</h3>" + //Chapter 6
-  // '<img src="images/electricity.jpg">' +
   "<p>In 2022, the annual natural gas usage in each apartment in New York ranged from 0 to 87,335,610.2 kilo British thermal units (kBTU), with a median of 3,240,799.9 kBTU (range from 0 to 322.53 kBTU/sqft, with a median of 56.96 kBTU/sqft).</p>";
 
 let divChapter7 =
   "<h3>Property Price Per Square Foot for Each Apartment in New York</h3>"; //Chapter 7
-  // '<img src="images/price.jpg">' +
-  // "<p>PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, PlaceHolder, </p>";
 
 let divChapter8 =
   "<h3>Cluster Chart: Annual Natural Gas Usage / Property Price</h3>" +
   '<iframe src="cluster_natural_gas_price.html" style="border: none; width: 1000px; height: 1000px;"></iframe>';
 
 let divChapter9a =
-  // "<h3 style = 'font-size: 27.5px'>Case Study: An Expensive Apartment with Low Natural Gas Usage</h3>" +
-  // "<h3 style='font-size: 27.5px; line-height: 5px;'>907 Fifth Ave</h3>" +
-  // '<img src="images/907 Fifth Ave_4.jpg">' +
-  // '<img src="images/907 Fifth Ave_2.jpg">' +
-  "<h3 style = 'font-size: 27.5px'>Case Study: An Expensive Apartment with Low Electricity Usage</h3>" +
+  "<h3 style = 'font-size: 2.0em'>Case Study: An Expensive Apartment with Low Natural Gas Usage</h3>" +
   '<img src="images/900 Fifth Avenue_2.webp">' + 
   '<img src="images/900 Fifth Avenue_3.webp">' + 
   "<p style='max-width:600px;'>· Property: 900 Fifth Avenue</p>"+ 
@@ -302,9 +247,10 @@ let divChapter10b = `
 
 let divChapter11 =
   "<h3>Conclusion</h3>" +
-  "<p style='max-width:600px;'>·&nbsp Renovation and maintenance significantly influence energy usage irrespective of a building's price.</p>"+
-  "<p style='max-width:600px;'>·&nbsp Occupancy rates and amenity types are key factors in energy consumption patterns.</p>"+
-  "<p style='max-width:600px;'>·&nbsp Building price and energy usage are interconnected, but the relationships are not always straightforward. Location and building age also play significant roles in shaping these relationships.</p>";
+  "<p style='max-width:65%; font-size: 1.5em'>·&nbsp Renovation and maintenance significantly influence energy usage irrespective of a building's price.</p>"+
+  "<p style='max-width:65%; font-size: 1.5em'>·&nbsp Occupancy rates and amenity types are key factors in energy consumption patterns.</p>"+
+  "<p style='max-width:65%; font-size: 1.5em'>·&nbsp Building price and energy usage are interconnected, but the relationships are not always straightforward. </p>"+
+  "<p style='max-width:65%; font-size: 1.5em'>·&nbsp Location and building age also play significant roles in shaping these relationships.</p>";
 
 var config = {
   style: "mapbox://styles/johnmasataka/cm3hsqpof007101r26ev52mye", //"mapbox://styles/johnmasataka/cm2m8nmv7002401qighq4h03p", “mapbox://styles/mapbox/satellite-streets-v12”
@@ -313,11 +259,8 @@ var config = {
   markerColor: "#ffffff",
   theme: "dark",
   use3dTerrain: true,
-  // headerContent: headerContent, 
   topTitle: topTitleDiv,
-  // title: titleDiv,
   subtitle: "",
-  // byline: bylineDiv,
   description: descriptionDiv,
   footer: footerDiv,
   chapters: [
