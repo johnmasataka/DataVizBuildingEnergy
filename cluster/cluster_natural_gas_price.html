@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity vs. Price Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <canvas id="clusterChart" width="3000" height="2500"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+
+    <script>
+        // Load data from a CSV file
+        Papa.parse("data/data.csv", {
+            download: true,
+            header: true,
+            complete: function (results) {
+                const data = results.data.map(row => ({
+                    x: parseFloat(row.price),
+                    y: parseFloat(row.natural_gas_psf),
+                    address: row.address 
+                }));
+
+                // Define value ranges and corresponding colors
+                const colorRanges = [
+                    { value: 0, color: "rgb(255, 255, 204)" },
+                    { value: 20, color: "rgb(199, 233, 180)" },
+                    { value: 40, color: "rgb(127, 205, 187)" },
+                    { value: 56.95, color: "rgb(65, 182, 196)" }, // Median
+                    { value: 145, color: "rgb(29, 145, 192)" },
+                    { value: 228, color: "rgb(34, 94,168)" },
+                    { value: 322.53, color: "rgb(12, 44, 132)" } // Maximum
+                ];
+
+                function getColorForValue(value) {
+                    for (let i = 0; i < colorRanges.length - 1; i++) {
+                        const rangeStart = colorRanges[i];
+                        const rangeEnd = colorRanges[i + 1];
+                        if (value >= rangeStart.value && value <= rangeEnd.value) {
+                            const ratio = (value - rangeStart.value) / (rangeEnd.value - rangeStart.value);
+                            const startRGB = rangeStart.color.match(/\d+/g).map(Number);
+                            const endRGB = rangeEnd.color.match(/\d+/g).map(Number);
+                            const interpolatedColor = startRGB.map((start, index) =>
+                                Math.round(start + ratio * (endRGB[index] - start))
+                            );
+                            return `rgb(${interpolatedColor[0]}, ${interpolatedColor[1]}, ${interpolatedColor[2]})`;
+                        }
+                    }
+                    return colorRanges[colorRanges.length - 1].color; // Default to maximum color
+                }
+
+                // Prepare the dataset with colors and include address in data points
+                const dataset = data.map(point => ({
+                    x: point.x,
+                    y: point.y,
+                    backgroundColor: getColorForValue(point.y),
+                    address: point.address // Ensure address is included in the data point for tooltip
+                }));
+
+                // Create the chart
+                const ctx = document.getElementById('clusterChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'scatter',
+                    data: {
+                        datasets: [{
+                            label: 'Price vs. Natural Gas',
+                            data: dataset, // Include all data points with their properties
+                            pointBackgroundColor: dataset.map(point => point.backgroundColor),
+                            pointBorderColor: '#ffffff',
+                            borderWidth: 0.1,
+                            pointRadius: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                type: 'linear',
+                                position: 'bottom',
+                                grid: {
+                                    color: '#4a4a4a',
+                                    display: true,
+                                    drawBorder: true
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Property Price per Sqft in 2022 ($)',
+                                    font: { size: 16 },
+                                    color: '#ffffff'
+                                },
+                                beginAtZero: true,
+                                ticks: {
+                                    color: '#a1a1a1'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Annual Natural Gas Usage per Sqft in 2022 (kBTU)',
+                                    font: { size: 16 },
+                                    color: '#ffffff'
+                                },
+                                grid: {
+                                    color: '#4a4a4a',
+                                    display: true,
+                                    drawBorder: true
+                                },
+                                beginAtZero: true,
+                                ticks: {
+                                    color: '#a1a1a1'
+                                }
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return [
+                                            `Price: $ ${context.raw.x}/sqft`,
+                                            `Nartual Gas: ${context.raw.y} Kwh/sqft/year`,
+                                            `Address: ${context.raw.address}` // Use address in tooltips
+                                        ];
+                                    }
+                                }
+                            },
+                            legend: { display: true }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

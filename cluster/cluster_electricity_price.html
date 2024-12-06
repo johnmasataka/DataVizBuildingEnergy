@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity vs. Price Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- <h1 style="color: white";>Electricity vs. Price Cluster Chart</h1> -->
+    <canvas id="clusterChart" width="3000" height="2500"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+    <!-- <script>
+        // Load data from a CSV file
+        Papa.parse("data/data.csv", { // Ensure "data/data.csv" is the correct relative path
+            download: true,
+            header: true,
+            complete: function (results) {
+                const data = results.data.map(row => ({
+                    x: parseFloat(row.price), // Ensure 'price' matches the CSV column header exactly
+                    y: parseFloat(row.electricity_psf) // Ensure 'electricity' matches the CSV column header exactly
+                }));
+
+                // Create the chart
+                const ctx = document.getElementById('clusterChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'scatter',
+                    data: {
+                        datasets: [{
+                            label: 'Electricity vs. Price', //chart title
+                            data: data,
+                            backgroundColor: 'rgba(75, 192, 192, 0.6)', //circle color
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1,
+                            pointRadius: 1.5 //circle width
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                type: 'linear',
+                                position: 'bottom',
+                                title: {
+                                    display: true,
+                                    text: 'Property Price per Sqft (2022)', 
+                                    font: {
+                                        size: 16 
+                                    },
+                                    //color: '#ffffff' 
+                                },
+                                beginAtZero: true
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Annual Electricity Usage per Sqft (2022)',
+                                    font: {
+                                        size: 16 
+                                    },
+                                    //color: '#ffffff' 
+                                },
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: true
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script> -->
+
+    <script>
+        // Load data from a CSV file
+        Papa.parse("data/data.csv", {
+            download: true,
+            header: true,
+            complete: function (results) {
+                const data = results.data.map(row => ({
+                    x: parseFloat(row.price),
+                    y: parseFloat(row.electricity_psf),
+                    address: row.address 
+                }));
+        
+                // Define the gradient values
+                const minValue = 0.046;
+                const medianValue = 16.19;
+                const maxValue = 105.57;
+                const minColor = [208, 255, 0];  // #d0ff00 (RGB)
+                const medianColor = [229, 142, 0]; // #e58e00 (RGB)
+                const maxColor = [255, 0, 0];   // #ff0000 (RGB)
+        
+                // Function to interpolate color
+                function interpolateColor(value) {
+                    let color;
+                    if (value <= medianValue) {
+                        const ratio = (value - minValue) / (medianValue - minValue);
+                        color = minColor.map((min, i) => Math.round(min + ratio * (medianColor[i] - min)));
+                    } else {
+                        const ratio = (value - medianValue) / (maxValue - medianValue);
+                        color = medianColor.map((med, i) => Math.round(med + ratio * (maxColor[i] - med)));
+                    }
+                    return `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+                }
+        
+                // Create the chart
+                const ctx = document.getElementById('clusterChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'scatter',
+                    data: {
+                        datasets: [{
+                            label: 'Price vs. Electricity',
+                            data: data.map(point => ({
+                                x: point.x,
+                                y: point.y,
+                                address: point.address  // Storing address in point data
+                            })),
+                            pointBackgroundColor: data.map(point => interpolateColor(point.y)),
+                            pointBorderColor: '#000',//point's outline
+                            borderWidth: 0.1,
+                            pointRadius: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                type: 'linear',
+                                position: 'bottom',
+                                grid: {
+                                    color: '#4a4a4a', //axis
+                                    display: true,
+                                    drawBorder: true
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Property Price per Sqft in 2022 ($)',
+                                    font: { size: 16 },
+                                    color: '#ffffff' 
+                                },
+                                beginAtZero: true,
+                                ticks: {
+                                    color: '#a1a1a1'//number on axis
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: '#4a4a4a', //axis
+                                    display: true,
+                                    drawBorder: true
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Annual Electricity Usage per Sqft in 2022 (Kwh)',
+                                    font: { size: 16 },
+                                    color: '#ffffff'
+                                },
+                                beginAtZero: true,
+                                ticks: {
+                                    color: '#a1a1a1'//number on axis
+                                }
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return [
+                                            `Price: $ ${context.raw.x}/sqft`,
+                                            `Electricity: ${context.raw.y} Kwh/sqft/year`,
+                                            `Address: ${context.raw.address}` // Display address in tooltip
+                                        ];
+                                    }
+                                }
+                            },
+                            legend: { display: true }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+    
+    
+</body>
+
+</html>
