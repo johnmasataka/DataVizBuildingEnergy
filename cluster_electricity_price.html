@@ -13,69 +13,6 @@
     <canvas id="clusterChart" width="3000" height="2500"></canvas>
 
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
-    <!-- <script>
-        // Load data from a CSV file
-        Papa.parse("data/data.csv", { // Ensure "data/data.csv" is the correct relative path
-            download: true,
-            header: true,
-            complete: function (results) {
-                const data = results.data.map(row => ({
-                    x: parseFloat(row.price), // Ensure 'price' matches the CSV column header exactly
-                    y: parseFloat(row.electricity_psf) // Ensure 'electricity' matches the CSV column header exactly
-                }));
-
-                // Create the chart
-                const ctx = document.getElementById('clusterChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'scatter',
-                    data: {
-                        datasets: [{
-                            label: 'Electricity vs. Price', //chart title
-                            data: data,
-                            backgroundColor: 'rgba(75, 192, 192, 0.6)', //circle color
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 1,
-                            pointRadius: 1.5 //circle width
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            x: {
-                                type: 'linear',
-                                position: 'bottom',
-                                title: {
-                                    display: true,
-                                    text: 'Property Price per Sqft (2022)', 
-                                    font: {
-                                        size: 16 
-                                    },
-                                    //color: '#ffffff' 
-                                },
-                                beginAtZero: true
-                            },
-                            y: {
-                                title: {
-                                    display: true,
-                                    text: 'Annual Electricity Usage per Sqft (2022)',
-                                    font: {
-                                        size: 16 
-                                    },
-                                    //color: '#ffffff' 
-                                },
-                                beginAtZero: true
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                display: true
-                            }
-                        }
-                    }
-                });
-            }
-        });
-    </script> -->
 
     <script>
         // Load data from a CSV file
@@ -125,7 +62,8 @@
                             pointBackgroundColor: data.map(point => interpolateColor(point.y)),
                             pointBorderColor: '#000',//point's outline
                             borderWidth: 0.1,
-                            pointRadius: 2
+                            pointRadius: 2,
+                            hidden: true // This hides the dataset initially
                         }]
                     },
                     options: {
