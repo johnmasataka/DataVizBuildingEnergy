@@ -173,7 +173,7 @@ let divChapter9b =
 
 let divChapter10a = `
   <div style="display: flex; justify-content: left; align-items: center; margin-left: 103px; margin-bottom: -75px;">
-      <h3>Case Study: Same Natural Gas Usage But Different Price</h3>
+      <h3>Case Study: Same Natural Gas Usage But Different Prices</h3>
   </div>
   <div style="display: flex; justify-content: left; align-items: center; margin-left: 103px; margin-bottom: -20px;">
       <p>The three properties listed below have similar natural gas usage (around the median of 56.96 kBTU/sqft/year), but their prices differ significantly. Although the sizes of these buildings vary, 1265 Gerard Avenue is extremely well-occupied, whereas 945 Fifth Avenue has a relatively high vacancy rate.</p>
