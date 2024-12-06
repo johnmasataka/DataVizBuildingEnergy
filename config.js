@@ -58,7 +58,7 @@ let descriptionDiv =
   // "<p style='text-align:center'>Welcome to New York! <br>▼</p>";
 
 let footerDiv =
-  '<p>This story is based on data by the <a href="http://placeholder.html">PlaceHolder Authority</a> and <a href="http://placeholder.html">PlaceHolder Authority</a>.</p>' +
+  // '<p>This story is based on data by the <a href="http://placeholder.html">PlaceHolder Authority</a> and <a href="http://placeholder.html">PlaceHolder Authority</a>.</p>' +
   '<p>2024 Fall | Data Visualization | Final Project | Author: John Masataka Jiang | Instructor: Jia Zhang</p>';
 
 let divChapter1 =
