@@ -1,11 +1,4 @@
-/* First, define what constitutes a small screen.
-This will affect the zoom parameter for each chapter. */
-
 var smallMedia = window.matchMedia("(max-width: 600px)").matches;
-
-/* Next, create two variables that will hold:
-1. The different types of layers available to Mapbox and their respective opacity attributes.
-2. The possible alignments which could be applied to the vignettes.*/
 
 var layerTypes = {
   fill: ["fill-opacity"],
@@ -23,10 +16,6 @@ var alignments = {
   right: "righty",
   full: "fully",
 };
-
-/* The next two functions help turn on and off individual
-layers through their opacity attributes: The first one gets
-the type of layer and the second one adjusts the layer's opacity */
 
 function getLayerPaintType(layer) {
   var layerType = map.getLayer(layer).type;
@@ -46,17 +35,11 @@ function setLayerOpacity(layer) {
   });
 }
 
-/* Next, these variables and functions create the story and vignette html elements, and populate them with the content from the config.js file.
-They also assign a css class to certain elements, also based on the config.js file */
-
-// Main 'story', 'features' and 'header' elements
 var story = document.getElementById("story");
 var features = document.createElement("div");
 var header = document.createElement("div");
 features.setAttribute("id", "features");
 
-// If the content exists, then assign it to the 'header' element
-// Note how each one of these are assigning 'innerHTML'
 if (config.topTitle) {
   var topTitle = document.createElement("div");
   topTitle.innerHTML = config.topTitle;
@@ -83,35 +66,23 @@ if (config.description) {
   header.appendChild(descriptionText);
 }
 
-// If after this, the header has anything in it, it gets appended to the story
 if (header.innerText.length > 0) {
   header.classList.add(config.theme);
   header.setAttribute("id", "header");
   story.appendChild(header);
 }
 
-/* After building the elements and assigning content to the header these functions will loop through the chapters in the config.js file, create the vignette elements and assign them their respective content */
-
 config.chapters.forEach((record, idx) => {
-  /* These first two variables will hold each vignette, the chapter
-    element will go in the container element */
   var container = document.createElement("div");
   var chapter = document.createElement("div");
-  // Adds a class to the vignette
   chapter.classList.add("br3");
-  // Adds all the content to the vignette's div
   chapter.innerHTML = record.chapterDiv;
-  // Sets the id for the vignette and adds the step css attribute
   container.setAttribute("id", record.id);
   container.classList.add("step");
-  // If the chapter is the first one, set it to active
   if (idx === 0) {
     container.classList.add("active");
   }
-  // Adds the overall theme to the chapter element
   chapter.classList.add(config.theme);
-  /* Appends the chapter to the container element and the container
-    element to the features element */
   container.appendChild(chapter);
   container.classList.add(alignments[record.alignment] || "centered");
   if (record.hidden) {
@@ -120,31 +91,23 @@ config.chapters.forEach((record, idx) => {
   features.appendChild(container);
 });
 
-// Appends the features element (with the vignettes) to the story element
 story.appendChild(features);
-
-/* Next, this section creates the footer element and assigns it
-its content based on the config.js file */
 
 var footer = document.createElement("div");
 
-// This assigns all the content to the footer element
 if (config.footer) {
   var footerText = document.createElement("p");
   footerText.innerHTML = config.footer;
   footer.appendChild(footerText);
 }
-// If the footer element contains any content, add it to the story
 if (footer.innerText.length > 0) {
   footer.classList.add(config.theme);
   footer.setAttribute("id", "footer");
   story.appendChild(footer);
 }
 
-// Adds the Mapbox access token
 mapboxgl.accessToken = config.accessToken;
 
-// Honestly, don't know what this does
 const transformRequest = (url) => {
   const hasQuery = url.indexOf("?") !== -1;
   const suffix = hasQuery
@@ -155,17 +118,13 @@ const transformRequest = (url) => {
   };
 };
 
-// Creates a variable to hold the starting zoom value
 var startingZoom;
-// If the screen size is small, it uses the `zoomSmall` value
 if (smallMedia) {
   startingZoom = config.chapters[0].location.zoomSmall;
 } else {
   startingZoom = config.chapters[0].location.zoom;
 }
 
-/* This section creates the map element with the
-attributes from the main section of the config.js file */
 var map = new mapboxgl.Map({
   container: "map",
   style: config.style,
@@ -182,16 +141,9 @@ if (config.showMarkers) {
   marker.setLngLat(config.chapters[0].location.center).addTo(map);
 }
 
-// Instantiates the scrollama function
 var scroller = scrollama();
 
-/* Here we add the two extra layers we are using, just like in our previous
-tutorial. At the end, however, we setup the functions that will tie the
-scrolling to the chapters and move the map from one location to another
-while changing the zoom level, pitch and bearing */
-
 map.on("load", function () {
-  // Add 3d terrain if necessary
   if (config.use3dTerrain) {
     map.addSource("mapbox-dem", {
       type: "raster-dem",
@@ -199,10 +151,8 @@ map.on("load", function () {
       tileSize: 512,
       maxzoom: 14,
     });
-    // Add the DEM source as a terrain layer with exaggerated height
     map.setTerrain({ source: "mapbox-dem", exaggeration: 1.5 });
 
-    // Add a sky layer that will show when the map is highly pitched
     map.addLayer({
       id: "sky",
       type: "sky",
@@ -215,7 +165,7 @@ map.on("load", function () {
   }
   map.addLayer(
     {
-      id: "electricity", //turnstileData
+      id: "electricity", 
       type: "circle",
       source: {
         type: "geojson",
@@ -226,11 +176,11 @@ map.on("load", function () {
           "interpolate",
           ["linear"],
           ["get", "electricity_psf"],
-          0, //0.046   //natural_gas_psf: 0.0
-          "#d0ff00",
-          16.19, //16.19  //natural_gas_psf: 56.96
-          "#e58e00",
-          105.57, //105.57   //natural_gas_psf: 322.53
+          8.00, 
+          "#84ff00",
+          16.19, 
+          "#ffd500", 
+          50.00, 
           "#ff0000",
         ],
         "circle-stroke-color": "#4d4d4d",
@@ -240,7 +190,7 @@ map.on("load", function () {
           ["exponential", 2],
           ["zoom"],
           10,
-          ["interpolate", ["linear"], ["get", "electricity"], -1, 10, -0.4, 4],//-1, 10, -0.4, 4
+          ["interpolate", ["linear"], ["get", "electricity"], -1, 10, -0.4, 1.5],//-1, 10, -0.4, 4
           15,
           [
             "interpolate",
@@ -266,33 +216,31 @@ map.on("load", function () {
         data: "data/data.geojson",
       },
       paint: {
-        // Use the same circle color logic if needed (or remove it if only size should change)
         "circle-color": [
           "interpolate",
           ["linear"],
           ["get", "electricity_psf"],
-          0,
-          "#d0ff00",
-          16.19,
-          "#e58e00",
-          105.57,
+          8.00, 
+          "#84ff00",
+          16.19, 
+          "#ffd500", 
+          50.00, 
           "#ff0000",
         ],
         "circle-stroke-color": "#4d4d4d",
         "circle-stroke-width": 0.5,
 
-        // Adjust the circle radius based on 'price' from the geojson file
         "circle-radius": [
           "interpolate",
           ["linear"],
-          ["get", "price"], // Use the 'price' property for size
-          1.31, 0.01, // Smallest size 
-          713.21, 4, // Medium size 
-          4336.16, 20, // Largest size 
+          ["get", "price"], 
+          1.31, 0.01, 
+          713.21, 1.5, 
+          4336.16, 6, 
         ],
       },
     },
-    "waterway-label" // Ensure this is layered appropriately in the map
+    "waterway-label" 
   );
 
   map.addLayer(
@@ -304,38 +252,36 @@ map.on("load", function () {
         data: "data/data.geojson",
       },
       paint: {
-        // Use the same circle color logic if needed (or remove it if only size should change)
         "circle-color": [
           "interpolate",
           ["linear"],
           ["get", "electricity_psf"],
-          0,
-          "#d0ff00",
-          16.19,
-          "#e58e00",
-          105.57,
+          8.00, 
+          "#84ff00",
+          16.19, 
+          "#ffd500", 
+          50.00, 
           "#ff0000",
         ],
         "circle-stroke-color": "#4d4d4d",
         "circle-stroke-width": 0.5,
 
-        // Adjust the circle radius based on 'price' from the geojson file
         "circle-radius": [
           "interpolate",
           ["linear"],
-          ["get", "price"], // Use the 'price' property for size
-          1.31, 1, // Smallest size 
-          713.21, 25, // Medium size 
-          4336.16, 50, // Largest size 
+          ["get", "price"], 
+          1.31, 1, 
+          713.21, 25, 
+          4336.16, 50, 
         ],
       },
     },
-    "waterway-label" // Ensure this is layered appropriately in the map
+    "waterway-label" 
   );
 
   map.addLayer(
     {
-      id: "natural_gas", //turnstileData
+      id: "natural_gas", 
       type: "circle",
       source: {
         type: "geojson",
@@ -346,19 +292,19 @@ map.on("load", function () {
           "interpolate",
           ["linear"],
           ["get", "natural_gas_psf"],
-          0, //0.046   //natural_gas_psf: 0.0
-          "rgb(255, 255, 204)",
           20, 
+          "rgb(255, 255, 204)",
+          35, 
           "rgb(199, 233, 180)",
-          40, 
+          50, 
           "rgb(127, 205, 187)",
-          56.95, //16.19  //natural_gas_psf: 56.96
+          56.95, 
           "rgb(65, 182, 196)",
-          145, 
+          90, 
           "rgb(29, 145, 192)",
-          228, 
+          120, 
           "rgb(34, 94,168)",
-          322.53, //105.57   //natural_gas_psf: 322.53
+          150, 
           "rgb(12, 44, 132)", 
         ],
         "circle-stroke-color": "#4d4d4d",
@@ -368,7 +314,7 @@ map.on("load", function () {
           ["exponential", 2],
           ["zoom"],
           10,
-          ["interpolate", ["linear"], ["get", "natural_gas_psf"], -1, 10, -0.4, 4],//-1, 10, -0.4, 4
+          ["interpolate", ["linear"], ["get", "natural_gas_psf"], -1, 10, -0.4, 1.5],
           15,
           [
             "interpolate",
@@ -394,41 +340,39 @@ map.on("load", function () {
         data: "data/data.geojson",
       },
       paint: {
-        // Use the same circle color logic if needed (or remove it if only size should change)
         "circle-color": [
           "interpolate",
           ["linear"],
           ["get", "natural_gas_psf"],
-          0, //0.046   //natural_gas_psf: 0.0
+          20,
           "rgb(255, 255, 204)",
-          20, 
+          35, 
           "rgb(199, 233, 180)",
-          40, 
+          50, 
           "rgb(127, 205, 187)",
-          56.95, //16.19  //natural_gas_psf: 56.96
+          56.95, 
           "rgb(65, 182, 196)",
-          145, 
+          90, 
           "rgb(29, 145, 192)",
-          228, 
+          120, 
           "rgb(34, 94,168)",
-          322.53, //105.57   //natural_gas_psf: 322.53
+          150, 
           "rgb(12, 44, 132)", 
         ],
         "circle-stroke-color": "#4d4d4d",
         "circle-stroke-width": 0.5,
 
-        // Adjust the circle radius based on 'price' from the geojson file
         "circle-radius": [
           "interpolate",
           ["linear"],
-          ["get", "price"], // Use the 'price' property for size
-          1.31, 0.01, // Smallest size 
-          713.21, 4, // Medium size 
-          4336.16, 20, // Largest size 
+          ["get", "price"], 
+          1.31, 0.01, 
+          713.21, 1.5,
+          4336.16, 6, 
         ],
       },
     },
-    "waterway-label" // Ensure this is layered appropriately in the map
+    "waterway-label" 
   );
 
   map.addLayer(
@@ -440,115 +384,41 @@ map.on("load", function () {
         data: "data/data.geojson",
       },
       paint: {
-        // Use the same circle color logic if needed (or remove it if only size should change)
         "circle-color": [
           "interpolate",
           ["linear"],
           ["get", "natural_gas_psf"],
-          0, //0.046   //natural_gas_psf: 0.0
-          "rgb(255, 255, 204)",
           20, 
+          "rgb(255, 255, 204)",
+          35, 
           "rgb(199, 233, 180)",
-          40, 
+          50, 
           "rgb(127, 205, 187)",
-          56.95, //16.19  //natural_gas_psf: 56.96
+          56.95, 
           "rgb(65, 182, 196)",
-          145, 
+          90, 
           "rgb(29, 145, 192)",
-          228, 
+          120, 
           "rgb(34, 94,168)",
-          322.53, //105.57   //natural_gas_psf: 322.53
+          150, 
           "rgb(12, 44, 132)", 
         ],
         "circle-stroke-color": "#4d4d4d",
         "circle-stroke-width": 0.5,
 
-        // Adjust the circle radius based on 'price' from the geojson file
         "circle-radius": [
           "interpolate",
           ["linear"],
-          ["get", "price"], // Use the 'price' property for size
-          1.31, 1, // Smallest size 
-          713.21, 25, // Medium size 
-          4336.16, 50, // Largest size 
+          ["get", "price"], 
+          1.31, 1, 
+          713.21, 25, 
+          4336.16, 50, 
         ],
       },
     },
-    "waterway-label" // Ensure this is layered appropriately in the map
+    "waterway-label" 
   );
 
-  // map.addLayer(
-  //   {
-  //     id: "same_electricity_diff_price",
-  //     type: "circle",
-  //     source: {
-  //       type: "geojson",
-  //       data: "data/data.geojson",
-  //     },
-  //     filter: ["in", "line", 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 100, 200], // Highlighted features
-  //     paint: {
-  //       "circle-color": [
-  //         "interpolate",
-  //         ["linear"],
-  //         ["get", "electricity_psf"],
-  //         0,
-  //         "#d0ff00",
-  //         16.19,
-  //         "#e58e00",
-  //         105.57,
-  //         "#ff0000",
-  //       ], // Base coloring logic remains
-  //       "circle-stroke-color": "#ff00ff", // Magenta stroke for highlighting
-  //       "circle-stroke-width": 20, // Thicker stroke for visibility
-  //       "circle-radius": [
-  //         "interpolate",
-  //         ["linear"],
-  //         ["get", "price"],
-  //         1.31,
-  //         0.01,
-  //         713.21,
-  //         4,
-  //         4336.16,
-  //         20,
-  //       ], // Same radius logic as base
-  //       "circle-stroke-dasharray": [4, 2], // Dashed stroke for highlighted circles
-  //     },
-  //   },
-  //   "waterway-label" // Add above the base layer for visibility
-  // );
-
-  // map.addLayer(
-  //   {
-  //     id: "medianIncome",
-  //     type: "fill",
-  //     source: {
-  //       type: "geojson",
-  //       data: "data/data.geojson",
-  //     },
-  //     filter: ['all', ['!=', ['get', 'MHHI'], null]], //if the data is not null, show the data 
-  //     paint: {
-  //       "fill-opacity": 0,
-  //       "fill-color": [
-  //         "step",
-  //         ["get", "MHHI"],
-  //         "#ffffff",
-  //         20000, "#E6E6E6", 
-  //         //"#ccedf5",
-  //         50000, "#BFBFBF",
-  //         //"#99daea",
-  //         75000, "#7A7A7A",
-  //         //"#66c7e0",
-  //         100000, "#404040",
-  //         //"#33b5d5",
-  //         150000, "#1A1A1A",
-  //         //"#00a2ca",
-  //       ],
-  //     },
-  //   },
-  //   "waterway"
-  // );
-
-  // Setup the instance, pass callback functions
   scroller
     .setup({
       step: ".step",
@@ -605,6 +475,4 @@ map.on("load", function () {
     });
 });
 
-/* Here we watch for any resizing of the screen to
-adjust our scrolling setup */
 window.addEventListener("resize", scroller.resize);

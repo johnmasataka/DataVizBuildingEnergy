@@ -27,11 +27,11 @@
                 }));
         
                 // Define the gradient values
-                const minValue = 0.046;
+                const minValue = 8.00;
                 const medianValue = 16.19;
-                const maxValue = 105.57;
-                const minColor = [208, 255, 0];  // #d0ff00 (RGB)
-                const medianColor = [229, 142, 0]; // #e58e00 (RGB)
+                const maxValue = 50.00;
+                const minColor = [132, 255, 0];  // #d0ff00 (RGB)
+                const medianColor = [255, 213, 0]; // #e58e00 (RGB)
                 const maxColor = [255, 0, 0];   // #ff0000 (RGB)
         
                 // Function to interpolate color
@@ -63,7 +63,7 @@
                             pointBorderColor: '#000',//point's outline
                             borderWidth: 0.1,
                             pointRadius: 2,
-                            hidden: true // This hides the dataset initially
+                            hidden: false // This hides the dataset initially
                         }]
                     },
                     options: {

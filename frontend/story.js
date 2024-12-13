@@ -2,7 +2,7 @@ let topTitleDiv =
   '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + 
   "<h4 style='font-size: 2.0em; margin-bottom: 40px'>2024 Fall &nbsp | &nbsp Data Visualization &nbsp | &nbsp Final Project</h4>" +
   "<h1 style='font-size: 5.0em;'>Apartment Energy Usage and Property Prices in New York</h1>" +
-  "<h5 style='font-size: 3.0em;'>John Masataka Jiang";
+  "<h5 style='font-size: 3.0em;'>Johnmasataka Xianfeng Jiang";
 
 let question = 
   '<h1 style="font-size: 3.0em;">When you rent or purchase an apartment, have you ever imagined how much electricity and natural gas your unit will cost?</h1>';
@@ -13,7 +13,7 @@ let descriptionDiv =
   question ;
 
 let footerDiv =
-  '<p>2024 Fall | Data Visualization | Final Project | Author: John Masataka Jiang | Instructor: Jia Zhang</p>';
+  '<p>2024 Fall | Data Visualization | Final Project | Author: Johnmasataka Xianfeng Jiang | Instructor: Jia Zhang</p>';
 
 let divChapter1 =
   "<h3>Chapter 1: Annual Electricity Usage Per Square Foot for Each Apartment in New York</h3>" +
@@ -133,11 +133,11 @@ let divChapter5b = `
   </div>`;
 
 let divChapter6 =
-  "<h3>Chapter 2: Annual Natural Gas Usage Per Square Foot for Each Apartment in New York</h3>" + //Chapter 6
+  "<h3>Chapter 2: Annual Natural Gas Usage Per Square Foot for Each Apartment in New York</h3>" + 
   "<p>In 2022, the annual natural gas usage in each apartment in New York ranged from 0 to 87,335,610.2 kilo British thermal units (kBTU), with a median of 3,240,799.9 kBTU (range from 0 to 322.53 kBTU/sqft, with a median of 56.96 kBTU/sqft).</p>";
 
 let divChapter7 =
-  "<h3>Property Price Per Square Foot for Each Apartment in New York</h3>"; //Chapter 7
+  "<h3>Property Price Per Square Foot for Each Apartment in New York</h3>"; 
 
 let divChapter8 =
   "<h3>Cluster Chart: Annual Natural Gas Usage / Property Price</h3>" +
@@ -253,8 +253,8 @@ let divChapter11 =
   "<p style='max-width:65%; font-size: 1.5em'>·&nbsp Location and building age also play significant roles in shaping these relationships.</p>";
 
 var config = {
-  style: "mapbox://styles/johnmasataka/cm3hsqpof007101r26ev52mye", //"mapbox://styles/johnmasataka/cm2m8nmv7002401qighq4h03p", “mapbox://styles/mapbox/satellite-streets-v12”
-  accessToken: "pk.eyJ1Ijoiam9obm1hc2F0YWthIiwiYSI6ImNseDl0ZnByMzJ1cnQyam9lbnB5ajQ3d3EifQ.vDNx6tuvH4CxRBRu-Tt0Tg",
+  style: "mapbox://styles/johnmasataka/cm3hsqpof007101r26ev52mye", 
+  accessToken: data.token,
   showMarkers: false,
   markerColor: "#ffffff",
   theme: "dark",
@@ -264,14 +264,14 @@ var config = {
   description: descriptionDiv,
   footer: footerDiv,
   chapters: [
-    //chapter 1: electricity
+    
     {
       id: "electricity",
       alignment: "left",
       hidden: false,
       chapterDiv: divChapter1,
       location: {
-        center: [-74, 40.725], //[-74, 40.725]
+        center: [-74, 40.725], 
         zoom: 11,
         zoomSmall: 9,
         pitch: 0,
@@ -292,7 +292,7 @@ var config = {
         { layer: "electricity", opacity: 0, duration: 300 },
       ],
     },
-    //chapter 2: price     
+ 
     {
       id: "electricityPrice1",
       alignment: "left",
@@ -323,7 +323,7 @@ var config = {
         { layer: "price", opacity: 0, duration: 300 },
       ],
     },
-    //chapter 3: cluster 
+
     {
       id: "electricityPrice2",
       alignment: "full",
@@ -335,9 +335,9 @@ var config = {
       location: {
         center: [-74, 40.725],
         zoom: 11,
-        zoomSmall: 9,//14
-        pitch: 0,//10
-        bearing: 0,//-7
+        zoomSmall: 9,
+        pitch: 0,
+        bearing: 0,
       },
       mapAnimation: "flyTo",
       rotateAnimation: false,
@@ -354,7 +354,7 @@ var config = {
         { layer: "price", opacity: 0, duration: 300 },
       ],
     },
-    //chapter 4a: h price, l electricty     
+
     {
       id: "electricityPriceCase1",
       alignment: "right",
@@ -382,10 +382,9 @@ var config = {
         { layer: "price_natural_gas_large", opacity: 0, duration: 300 },
       ],
       onChapterExit: [
-        // { layer: "price_large", opacity: 0, duration: 300 },
       ],
     },
-    //chapter 4b: l price, h electricty  
+
     {
       id: "electricityPriceCase2",
       alignment: "right",
@@ -424,7 +423,6 @@ var config = {
       ],
     },
 
-    //chapter 5a: same price, diff electricity     
     {
       id: "electricityPrice3",
       alignment: "full",
@@ -456,7 +454,6 @@ var config = {
       ],
     },
 
-    //chapter 5b: same electricity, diff price    
     {
       id: "electricityPrice4",
       alignment: "full",
@@ -488,7 +485,6 @@ var config = {
       ],
     },
 
-    //chapter 6: natural gas     
     {
       id: "naturalGas",
       alignment: "left",
@@ -520,7 +516,6 @@ var config = {
       ],
     },
 
-    //chapter 7: natural gas, price    
     {
       id: "naturalGasPrice1",
       alignment: "left",
@@ -552,7 +547,6 @@ var config = {
       ],
     },
 
-    //chapter 8: cluster    
     {
       id: "naturalGasPrice2",
       alignment: "full",
@@ -583,8 +577,7 @@ var config = {
         { layer: "price_natural_gas", opacity: 0, duration: 300 },
       ],
     },
-
-    //chapter 9a: h price, l natural gas     
+ 
     {
       id: "naturalGasPriceCase1",
       alignment: "right",
@@ -595,7 +588,7 @@ var config = {
       chapterDiv: divChapter9a,
       location: {
         center: [-73.967281, 40.7719126], 
-        zoom: 19,
+        zoom: 18,
         zoomSmall: 14,
         pitch: 40,
         bearing: -7,
@@ -612,10 +605,9 @@ var config = {
         { layer: "price_natural_gas_large", opacity: 1, duration: 300 },
       ],
       onChapterExit: [
-        // { layer: "price_natural_gas_large", opacity: 0, duration: 300 },
       ],
     },
-    //chapter 9b: l price, h natural gas  
+
     {
       id: "naturalGasPriceCase2",
       alignment: "right",
@@ -647,7 +639,6 @@ var config = {
       ],
     },
 
-    //chapter 10a: same price, diff electricity     
     {
       id: "naturalGasPrice3",
       alignment: "full",
@@ -679,7 +670,6 @@ var config = {
       ],
     },
 
-    //chapter 10b: same electricity, diff price    
     {
       id: "naturalGasPrice4",
       alignment: "full",
@@ -710,8 +700,7 @@ var config = {
         { layer: "price_natural_gas", opacity: 0, duration: 300 },
       ],
     },
-
-    //chapter 11: same electricity, diff price    
+ 
     {
       id: "naturalGasPrice4",
       alignment: "full",
