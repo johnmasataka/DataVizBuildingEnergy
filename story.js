@@ -254,7 +254,7 @@ let divChapter11 =
 
 var config = {
   style: "mapbox://styles/johnmasataka/cm3hsqpof007101r26ev52mye", 
-  accessToken: data.token,
+  accessToken: 'pk.eyJ1Ijoiam9obm1hc2F0YWthIiwiYSI6ImNtNG12ZmN5ZTAxcDAybHExeGQ2ZTAxYTUifQ.i_J5d_bvdfo0ohv3PwH4Pg',
   showMarkers: false,
   markerColor: "#ffffff",
   theme: "dark",
