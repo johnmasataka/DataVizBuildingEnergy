@@ -10,7 +10,9 @@ let question =
 let descriptionDiv =
   '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' +
 
-  question ;
+  question +
+
+  '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>';
 
 let footerDiv =
   '<p>2024 Fall | Data Visualization | Final Project | Author: Johnmasataka Xianfeng Jiang | Instructor: Jia Zhang</p>';
