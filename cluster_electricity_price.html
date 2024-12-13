@@ -9,13 +9,11 @@
 </head>
 
 <body>
-    <!-- <h1 style="color: white";>Electricity vs. Price Cluster Chart</h1> -->
     <canvas id="clusterChart" width="3000" height="2500"></canvas>
 
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
 
     <script>
-        // Load data from a CSV file
         Papa.parse("data/data.csv", {
             download: true,
             header: true,
@@ -26,15 +24,13 @@
                     address: row.address 
                 }));
         
-                // Define the gradient values
                 const minValue = 8.00;
                 const medianValue = 16.19;
                 const maxValue = 50.00;
-                const minColor = [132, 255, 0];  // #d0ff00 (RGB)
-                const medianColor = [255, 213, 0]; // #e58e00 (RGB)
-                const maxColor = [255, 0, 0];   // #ff0000 (RGB)
+                const minColor = [132, 255, 0];  
+                const medianColor = [255, 213, 0]; 
+                const maxColor = [255, 0, 0];  
         
-                // Function to interpolate color
                 function interpolateColor(value) {
                     let color;
                     if (value <= medianValue) {
@@ -47,7 +43,6 @@
                     return `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
                 }
         
-                // Create the chart
                 const ctx = document.getElementById('clusterChart').getContext('2d');
                 new Chart(ctx, {
                     type: 'scatter',
@@ -57,13 +52,13 @@
                             data: data.map(point => ({
                                 x: point.x,
                                 y: point.y,
-                                address: point.address  // Storing address in point data
+                                address: point.address 
                             })),
                             pointBackgroundColor: data.map(point => interpolateColor(point.y)),
-                            pointBorderColor: '#000',//point's outline
+                            pointBorderColor: '#000',
                             borderWidth: 0.1,
                             pointRadius: 2,
-                            hidden: false // This hides the dataset initially
+                            hidden: false 
                         }]
                     },
                     options: {
@@ -73,7 +68,7 @@
                                 type: 'linear',
                                 position: 'bottom',
                                 grid: {
-                                    color: '#4a4a4a', //axis
+                                    color: '#4a4a4a', 
                                     display: true,
                                     drawBorder: true
                                 },
@@ -85,12 +80,12 @@
                                 },
                                 beginAtZero: true,
                                 ticks: {
-                                    color: '#a1a1a1'//number on axis
+                                    color: '#a1a1a1'
                                 }
                             },
                             y: {
                                 grid: {
-                                    color: '#4a4a4a', //axis
+                                    color: '#4a4a4a', 
                                     display: true,
                                     drawBorder: true
                                 },
@@ -102,7 +97,7 @@
                                 },
                                 beginAtZero: true,
                                 ticks: {
-                                    color: '#a1a1a1'//number on axis
+                                    color: '#a1a1a1'
                                 }
                             }
                         },
@@ -113,7 +108,7 @@
                                         return [
                                             `Price: $ ${context.raw.x}/sqft`,
                                             `Electricity: ${context.raw.y} Kwh/sqft/year`,
-                                            `Address: ${context.raw.address}` // Display address in tooltip
+                                            `Address: ${context.raw.address}` 
                                         ];
                                     }
                                 }

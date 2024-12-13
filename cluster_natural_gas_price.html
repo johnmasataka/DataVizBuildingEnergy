@@ -13,7 +13,6 @@
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
 
     <script>
-        // Load data from a CSV file
         Papa.parse("data/data.csv", {
             download: true,
             header: true,
@@ -24,15 +23,14 @@
                     address: row.address 
                 }));
 
-                // Define value ranges and corresponding colors
                 const colorRanges = [
                     { value: 0, color: "rgb(255, 255, 204)" },
                     { value: 15, color: "rgb(199, 233, 180)" },
                     { value: 35, color: "rgb(127, 205, 187)" },
-                    { value: 56.95, color: "rgb(65, 182, 196)" }, // Median
+                    { value: 56.95, color: "rgb(65, 182, 196)" }, 
                     { value: 90, color: "rgb(29, 145, 192)" },
                     { value: 120, color: "rgb(34, 94,168)" },
-                    { value: 150, color: "rgb(12, 44, 132)" } // Maximum
+                    { value: 150, color: "rgb(12, 44, 132)" } 
                 ];
 
                 function getColorForValue(value) {
@@ -49,25 +47,23 @@
                             return `rgb(${interpolatedColor[0]}, ${interpolatedColor[1]}, ${interpolatedColor[2]})`;
                         }
                     }
-                    return colorRanges[colorRanges.length - 1].color; // Default to maximum color
+                    return colorRanges[colorRanges.length - 1].color; 
                 }
 
-                // Prepare the dataset with colors and include address in data points
                 const dataset = data.map(point => ({
                     x: point.x,
                     y: point.y,
                     backgroundColor: getColorForValue(point.y),
-                    address: point.address // Ensure address is included in the data point for tooltip
+                    address: point.address 
                 }));
 
-                // Create the chart
                 const ctx = document.getElementById('clusterChart').getContext('2d');
                 new Chart(ctx, {
                     type: 'scatter',
                     data: {
                         datasets: [{
                             label: 'Price vs. Natural Gas',
-                            data: dataset, // Include all data points with their properties
+                            data: dataset, 
                             pointBackgroundColor: dataset.map(point => point.backgroundColor),
                             pointBorderColor: '#ffffff',
                             borderWidth: 0.1,
@@ -121,7 +117,7 @@
                                         return [
                                             `Price: $ ${context.raw.x}/sqft`,
                                             `Nartual Gas: ${context.raw.y} Kwh/sqft/year`,
-                                            `Address: ${context.raw.address}` // Use address in tooltips
+                                            `Address: ${context.raw.address}`
                                         ];
                                     }
                                 }

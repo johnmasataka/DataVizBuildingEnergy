@@ -1,5 +1,4 @@
 .question-bg {
-    /* background-image: url('images/electricity.jpg');  */
     display: flex;
     align-items: center;  
     justify-content: center;  
@@ -13,7 +12,6 @@
 }
 
 .topTitle-bg {
-    /* background-image: url('images/GSAPP.png');  */
     display: flex;
     align-items: center;  
     justify-content: center;  
@@ -186,7 +184,8 @@ a:visited {
 
 .dark {
     color: #fafafa;
-    background-color: #44444400;
+    background-color: #444444; 
+    /* The original version during the presentation: change background-color to transparent  */
 }
 
 .transparent{
