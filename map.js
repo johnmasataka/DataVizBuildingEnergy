@@ -163,25 +163,26 @@ map.on("load", function () {
       },
     });
   }
-  map.addLayer(
+
+  // Add source first
+  map.addSource("data", {
+    type: "geojson",
+    data: "data/data.geojson",
+  });
+
+  // Add layers with initial opacity 0
+  const layers = [
     {
-      id: "electricity", 
+      id: "electricity",
       type: "circle",
-      source: {
-        type: "geojson",
-        data: "data/data.geojson",
-      },
       paint: {
         "circle-color": [
           "interpolate",
           ["linear"],
           ["get", "electricity_psf"],
-          8.00, 
-          "#84ff00",
-          16.19, 
-          "#ffd500", 
-          50.00, 
-          "#ff0000",
+          8.00, "#84ff00",
+          16.19, "#ffd500",
+          50.00, "#ff0000",
         ],
         "circle-stroke-color": "#4d4d4d",
         "circle-stroke-width": 0.5,
@@ -189,123 +190,80 @@ map.on("load", function () {
           "interpolate",
           ["exponential", 2],
           ["zoom"],
-          10,
-          ["interpolate", ["linear"], ["get", "electricity"], -1, 10, -0.4, 1.5],//-1, 10, -0.4, 4
-          15,
-          [
-            "interpolate",
-            ["linear"],
-            ["get", "electricity"],
-            -1,
-            25,
-            -0.4,
-            12,
-          ],
+          10, ["interpolate", ["linear"], ["get", "electricity"], -1, 10, -0.4, 1.5],
+          15, ["interpolate", ["linear"], ["get", "electricity"], -1, 25, -0.4, 12],
         ],
+        "circle-opacity": 0,
+        "circle-stroke-opacity": 0,
       },
     },
-    "waterway-label"
-  );
-
-  map.addLayer(
     {
       id: "price",
       type: "circle",
-      source: {
-        type: "geojson",
-        data: "data/data.geojson",
-      },
       paint: {
         "circle-color": [
           "interpolate",
           ["linear"],
           ["get", "electricity_psf"],
-          8.00, 
-          "#84ff00",
-          16.19, 
-          "#ffd500", 
-          50.00, 
-          "#ff0000",
+          8.00, "#84ff00",
+          16.19, "#ffd500",
+          50.00, "#ff0000",
         ],
         "circle-stroke-color": "#4d4d4d",
         "circle-stroke-width": 0.5,
-
         "circle-radius": [
           "interpolate",
           ["linear"],
-          ["get", "price"], 
-          1.31, 0.01, 
-          713.21, 1.5, 
-          4336.16, 6, 
+          ["get", "price"],
+          1.31, 0.01,
+          713.21, 1.5,
+          4336.16, 6,
         ],
+        "circle-opacity": 0,
+        "circle-stroke-opacity": 0,
       },
     },
-    "waterway-label" 
-  );
-
-  map.addLayer(
     {
       id: "price_large",
       type: "circle",
-      source: {
-        type: "geojson",
-        data: "data/data.geojson",
-      },
       paint: {
         "circle-color": [
           "interpolate",
           ["linear"],
           ["get", "electricity_psf"],
-          8.00, 
-          "#84ff00",
-          16.19, 
-          "#ffd500", 
-          50.00, 
-          "#ff0000",
+          8.00, "#84ff00",
+          16.19, "#ffd500",
+          50.00, "#ff0000",
         ],
         "circle-stroke-color": "#4d4d4d",
         "circle-stroke-width": 0.5,
-
         "circle-radius": [
           "interpolate",
           ["linear"],
-          ["get", "price"], 
-          1.31, 1, 
-          713.21, 25, 
-          4336.16, 50, 
+          ["get", "price"],
+          1.31, 1,
+          713.21, 25,
+          4336.16, 50,
         ],
+        "circle-opacity": 0,
+        "circle-stroke-opacity": 0,
       },
     },
-    "waterway-label" 
-  );
-
-  map.addLayer(
     {
-      id: "natural_gas", 
+      id: "natural_gas",
       type: "circle",
-      source: {
-        type: "geojson",
-        data: "data/data.geojson",
-      },
       paint: {
         "circle-color": [
           "interpolate",
           ["linear"],
           ["get", "natural_gas_psf"],
-          20, 
-          "rgb(255, 255, 204)",
-          35, 
-          "rgb(199, 233, 180)",
-          50, 
-          "rgb(127, 205, 187)",
-          56.95, 
-          "rgb(65, 182, 196)",
-          90, 
-          "rgb(29, 145, 192)",
-          120, 
-          "rgb(34, 94,168)",
-          150, 
-          "rgb(12, 44, 132)", 
+          20, "rgb(255, 255, 204)",
+          35, "rgb(199, 233, 180)",
+          50, "rgb(127, 205, 187)",
+          56.95, "rgb(65, 182, 196)",
+          90, "rgb(29, 145, 192)",
+          120, "rgb(34, 94,168)",
+          150, "rgb(12, 44, 132)",
         ],
         "circle-stroke-color": "#4d4d4d",
         "circle-stroke-width": 0.5,
@@ -313,111 +271,82 @@ map.on("load", function () {
           "interpolate",
           ["exponential", 2],
           ["zoom"],
-          10,
-          ["interpolate", ["linear"], ["get", "natural_gas_psf"], -1, 10, -0.4, 1.5],
-          15,
-          [
-            "interpolate",
-            ["linear"],
-            ["get", "natural_gas_psf"],
-            -1,
-            25,
-            -0.4,
-            12,
-          ],
+          10, ["interpolate", ["linear"], ["get", "natural_gas_psf"], -1, 10, -0.4, 1.5],
+          15, ["interpolate", ["linear"], ["get", "natural_gas_psf"], -1, 25, -0.4, 12],
         ],
+        "circle-opacity": 0,
+        "circle-stroke-opacity": 0,
       },
     },
-    "waterway-label"
-  );
-
-  map.addLayer(
     {
       id: "price_natural_gas",
       type: "circle",
-      source: {
-        type: "geojson",
-        data: "data/data.geojson",
-      },
       paint: {
         "circle-color": [
           "interpolate",
           ["linear"],
           ["get", "natural_gas_psf"],
-          20,
-          "rgb(255, 255, 204)",
-          35, 
-          "rgb(199, 233, 180)",
-          50, 
-          "rgb(127, 205, 187)",
-          56.95, 
-          "rgb(65, 182, 196)",
-          90, 
-          "rgb(29, 145, 192)",
-          120, 
-          "rgb(34, 94,168)",
-          150, 
-          "rgb(12, 44, 132)", 
+          20, "rgb(255, 255, 204)",
+          35, "rgb(199, 233, 180)",
+          50, "rgb(127, 205, 187)",
+          56.95, "rgb(65, 182, 196)",
+          90, "rgb(29, 145, 192)",
+          120, "rgb(34, 94,168)",
+          150, "rgb(12, 44, 132)",
         ],
         "circle-stroke-color": "#4d4d4d",
         "circle-stroke-width": 0.5,
-
         "circle-radius": [
           "interpolate",
           ["linear"],
-          ["get", "price"], 
-          1.31, 0.01, 
+          ["get", "price"],
+          1.31, 0.01,
           713.21, 1.5,
-          4336.16, 6, 
+          4336.16, 6,
         ],
+        "circle-opacity": 0,
+        "circle-stroke-opacity": 0,
       },
     },
-    "waterway-label" 
-  );
-
-  map.addLayer(
     {
       id: "price_natural_gas_large",
       type: "circle",
-      source: {
-        type: "geojson",
-        data: "data/data.geojson",
-      },
       paint: {
         "circle-color": [
           "interpolate",
           ["linear"],
           ["get", "natural_gas_psf"],
-          20, 
-          "rgb(255, 255, 204)",
-          35, 
-          "rgb(199, 233, 180)",
-          50, 
-          "rgb(127, 205, 187)",
-          56.95, 
-          "rgb(65, 182, 196)",
-          90, 
-          "rgb(29, 145, 192)",
-          120, 
-          "rgb(34, 94,168)",
-          150, 
-          "rgb(12, 44, 132)", 
+          20, "rgb(255, 255, 204)",
+          35, "rgb(199, 233, 180)",
+          50, "rgb(127, 205, 187)",
+          56.95, "rgb(65, 182, 196)",
+          90, "rgb(29, 145, 192)",
+          120, "rgb(34, 94,168)",
+          150, "rgb(12, 44, 132)",
         ],
         "circle-stroke-color": "#4d4d4d",
         "circle-stroke-width": 0.5,
-
         "circle-radius": [
           "interpolate",
           ["linear"],
-          ["get", "price"], 
-          1.31, 1, 
-          713.21, 25, 
-          4336.16, 50, 
+          ["get", "price"],
+          1.31, 1,
+          713.21, 25,
+          4336.16, 50,
         ],
+        "circle-opacity": 0,
+        "circle-stroke-opacity": 0,
       },
-    },
-    "waterway-label" 
-  );
+    }
+  ];
+
+  // Add all layers with initial opacity 0
+  layers.forEach(layer => {
+    map.addLayer({
+      ...layer,
+      source: "data",
+    }, "waterway-label");
+  });
 
   scroller
     .setup({

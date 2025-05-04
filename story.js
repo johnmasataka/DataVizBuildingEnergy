@@ -2,7 +2,7 @@ let topTitleDiv =
   '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + 
   "<h4 style='font-size: 2.0em; margin-bottom: 40px'>2024 Fall &nbsp | &nbsp Data Visualization &nbsp | &nbsp Final Project</h4>" +
   "<h1 style='font-size: 5.0em;'>Apartment Energy Usage and Property Prices in New York</h1>" +
-  "<h5 style='font-size: 3.0em;'>Johnmasataka Xianfeng Jiang";
+  "<h5 style='font-size: 3.0em;'>John Masataka Xianfeng Jiang ";
 
 let question = 
   '<h1 style="font-size: 3.0em;">When you rent or purchase an apartment, have you ever imagined how much electricity and natural gas your unit will cost?</h1>';
@@ -12,17 +12,84 @@ let descriptionDiv =
 
   question +
 
-  '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>';
+  '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>' + '<br>';
 
 let footerDiv =
-  '<p>2024 Fall | Data Visualization | Final Project | Author: Johnmasataka Xianfeng Jiang | Instructor: Jia Zhang</p>';
+  '<p>2024 Fall | Data Visualization | Final Project | Author: John Masataka Xianfeng Jiang | Advisor: Jia Zhang</p>';
 
 let divChapter1 =
   "<h3>Chapter 1: Annual Electricity Usage Per Square Foot for Each Apartment in New York</h3>" +
-  "<p>In 2022, the annual electricity usage in each apartment in New York ranged from 13,112.2 to 40,280,213.3 kilowatt-hours (kWh), with a median of 986,685.6 kWh (range from 0 to 16.19 kWh/sqft, with a median of 105.57 kWh/sqft).</p>";
+  "<p>In 2022, the annual electricity usage in each apartment in New York ranged from 13,112.2 to 40,280,213.3 kilowatt-hours (kWh), with a median of 986,685.6 kWh (range from 0 to 16.19 kWh/sqft, with a median of 105.57 kWh/sqft).</p>" +
+  '<div style="display: flex; align-items: center; margin-top: 20px; padding: 0;">' +
+    '<div style="display: flex; flex-direction: column; margin-right: 20px; padding: 0;">' +
+      '<div style="display: flex; align-items: center; margin-bottom: 8px; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #84ff00; border: 0.5px solid #4d4d4d;"></span>' +
+          'Low Usage (< 8 kWh/sqft)' +
+        '</span>' +
+      '</div>' +
+      '<div style="display: flex; align-items: center; margin-bottom: 8px; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #ffd500; border: 0.5px solid #4d4d4d;"></span>' +
+          'Medium Usage (8-16.19 kWh/sqft)' +
+        '</span>' +
+      '</div>' +
+      '<div style="display: flex; align-items: center; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #ff0000; border: 0.5px solid #4d4d4d;"></span>' +
+          'High Usage (> 16.19 kWh/sqft)' +
+        '</span>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
 
 let divChapter2 =
-  "<h3>Property Price Per Square Foot for Each Apartment in New York</h3>" ;
+  "<h3>Annual Electricity Usage and Property Price for Each Apartment in New York</h3>" +
+  "<p>In 2022, the annual electricity usage in each apartment in New York ranged from 13,112.2 to 40,280,213.3 kilowatt-hours (kWh), with a median of 986,685.6 kWh (range from 0 to 16.19 kWh/sqft, with a median of 105.57 kWh/sqft).</p>" +
+  '<div style="display: flex; align-items: center; margin-top: 20px; padding: 0;">' +
+    '<div style="display: flex; flex-direction: column; margin-right: 20px; padding: 0;">' +
+      '<div style="display: flex; align-items: center; margin-bottom: 2px; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #84ff00; border: 0.5px solid #4d4d4d;"></span>' +
+          'Low Usage (< 8 kWh/sqft)' +
+        '</span>' +
+      '</div>' +
+      '<div style="display: flex; align-items: center; margin-bottom: 2px; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #ffd500; border: 0.5px solid #4d4d4d;"></span>' +
+          'Medium Usage (8-16.19 kWh/sqft)' +
+        '</span>' +
+      '</div>' +
+      '<div style="display: flex; align-items: center; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #ff0000; border: 0.5px solid #4d4d4d;"></span>' +
+          'High Usage (> 16.19 kWh/sqft)' +
+        '</span>' +
+      '</div>' +
+    '</div>' +
+  '</div>' +
+  '<div style="display: flex; align-items: center; margin-top: 20px; padding: 0;">' +
+    '<div style="display: flex; flex-direction: column; margin-right: 20px; padding: 0;">' +
+      '<div style="display: flex; align-items: center; margin-bottom: 2px; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 1px; border-radius: 50%; background-color: #ffffff; border: 0.5px solid #4d4d4d; margin-left: 4.5px;"></span>' +
+          'Low Price ($1.31/sqft)' +
+        '</span>' +
+      '</div>' +
+      '<div style="display: flex; align-items: center; margin-bottom: 2px; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #ffffff; border: 0.5px solid #4d4d4d; margin-left: 2.5px;"></span>' +
+          'Medium Price ($713.21/sqft)' +
+        '</span>' +
+      '</div>' +
+      '<div style="display: flex; align-items: center; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; border-radius: 50%; background-color: #ffffff; border: 0.5px solid #4d4d4d;"></span>' +
+          'High Price ($4336.16/sqft)' +
+        '</span>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
 
 let divChapter3 =
   "<h3>Cluster Chart: Annual Electricity Usage / Property Price</h3>" +
@@ -136,10 +203,76 @@ let divChapter5b = `
 
 let divChapter6 =
   "<h3>Chapter 2: Annual Natural Gas Usage Per Square Foot for Each Apartment in New York</h3>" + 
-  "<p>In 2022, the annual natural gas usage in each apartment in New York ranged from 0 to 87,335,610.2 kilo British thermal units (kBTU), with a median of 3,240,799.9 kBTU (range from 0 to 322.53 kBTU/sqft, with a median of 56.96 kBTU/sqft).</p>";
+  "<p>In 2022, the annual natural gas usage in each apartment in New York ranged from 0 to 87,335,610.2 kilo British thermal units (kBTU), with a median of 3,240,799.9 kBTU (range from 0 to 322.53 kBTU/sqft, with a median of 56.96 kBTU/sqft).</p>" +
+  '<div style="display: flex; align-items: center; margin-top: 20px; padding: 0;">' +
+    '<div style="display: flex; flex-direction: column; margin-right: 20px; padding: 0;">' +
+      '<div style="display: flex; align-items: center; margin-bottom: 2px; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: rgb(255, 255, 204); border: 0.5px solid #4d4d4d;"></span>' +
+          'Low Usage (< 20 kBTU/sqft)' +
+        '</span>' +
+      '</div>' +
+      '<div style="display: flex; align-items: center; margin-bottom: 2px; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: rgb(65, 182, 196); border: 0.5px solid #4d4d4d;"></span>' +
+          'Medium Usage (20-56.95 kBTU/sqft)' +
+        '</span>' +
+      '</div>' +
+      '<div style="display: flex; align-items: center; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: rgb(12, 44, 132); border: 0.5px solid #4d4d4d;"></span>' +
+          'High Usage (> 56.95 kBTU/sqft)' +
+        '</span>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
 
 let divChapter7 =
-  "<h3>Property Price Per Square Foot for Each Apartment in New York</h3>"; 
+  "<h3>Property Price Per Square Foot for Each Apartment in New York</h3>" +
+  '<div style="display: flex; align-items: center; margin-top: 20px; padding: 0;">' +
+    '<div style="display: flex; flex-direction: column; margin-right: 20px; padding: 0;">' +
+      '<div style="display: flex; align-items: center; margin-bottom: 2px; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: rgb(255, 255, 204); border: 0.5px solid #4d4d4d;"></span>' +
+          'Low Usage (< 20 kBTU/sqft)' +
+        '</span>' +
+      '</div>' +
+      '<div style="display: flex; align-items: center; margin-bottom: 2px; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: rgb(65, 182, 196); border: 0.5px solid #4d4d4d;"></span>' +
+          'Medium Usage (20-56.95 kBTU/sqft)' +
+        '</span>' +
+      '</div>' +
+      '<div style="display: flex; align-items: center; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: rgb(12, 44, 132); border: 0.5px solid #4d4d4d;"></span>' +
+          'High Usage (> 56.95 kBTU/sqft)' +
+        '</span>' +
+      '</div>' +
+    '</div>' +
+  '</div>' +
+  '<div style="display: flex; align-items: center; margin-top: 20px; padding: 0;">' +
+    '<div style="display: flex; flex-direction: column; margin-right: 20px; padding: 0;">' +
+      '<div style="display: flex; align-items: center; margin-bottom: 2px; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 1px; border-radius: 50%; background-color: #ffffff; border: 0.5px solid #4d4d4d; margin-left: 4.5px;"></span>' +
+          'Low Price ($1.31/sqft)' +
+        '</span>' +
+      '</div>' +
+      '<div style="display: flex; align-items: center; margin-bottom: 2px; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #ffffff; border: 0.5px solid #4d4d4d; margin-left: 2.5px;"></span>' +
+          'Medium Price ($713.21/sqft)' +
+        '</span>' +
+      '</div>' +
+      '<div style="display: flex; align-items: center; padding: 0;">' +
+        '<span style="position: relative; padding-left: 15px; display: block; font-family: \'Roboto Condensed\', sans-serif; font-size: 14px; line-height: 1.2;">' +
+          '<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; border-radius: 50%; background-color: #ffffff; border: 0.5px solid #4d4d4d;"></span>' +
+          'High Price ($4336.16/sqft)' +
+        '</span>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
 
 let divChapter8 =
   "<h3>Cluster Chart: Annual Natural Gas Usage / Property Price</h3>" +
@@ -256,7 +389,7 @@ let divChapter11 =
 
 var config = {
   style: "mapbox://styles/johnmasataka/cm3hsqpof007101r26ev52mye", 
-  accessToken: 'pk.eyJ1Ijoiam9obm1hc2F0YWthIiwiYSI6ImNtNG12ZmN5ZTAxcDAybHExeGQ2ZTAxYTUifQ.i_J5d_bvdfo0ohv3PwH4Pg',
+  accessToken: 'pk.eyJ1Ijoiam9obm1hc2F0YWthIiwiYSI6ImNseDl0ZnByMzJ1cnQyam9lbnB5ajQ3d3EifQ.vDNx6tuvH4CxRBRu-Tt0Tg',
   showMarkers: false,
   markerColor: "#ffffff",
   theme: "dark",
@@ -266,7 +399,33 @@ var config = {
   description: descriptionDiv,
   footer: footerDiv,
   chapters: [
-    
+    {
+      id: "title",
+      alignment: "full",
+      hidden: false,
+      chapterDiv: "",
+      location: {
+        center: [-74, 40.725],
+        zoom: 11,
+        zoomSmall: 9,
+        pitch: 0,
+        bearing: 0,
+      },
+      mapAnimation: "flyTo",
+      rotateAnimation: false,
+      callback: "",
+      onChapterEnter: [
+        { layer: "electricity", opacity: 0, duration: 300 },
+        { layer: "price", opacity: 0, duration: 300 },
+        { layer: "price_large", opacity: 0, duration: 300 },
+        { layer: "natural_gas", opacity: 0, duration: 300 },
+        { layer: "price_natural_gas", opacity: 0, duration: 300 },
+        { layer: "price_natural_gas_large", opacity: 0, duration: 300 },
+      ],
+      onChapterExit: [
+        { layer: "electricity", opacity: 0, duration: 300 },
+      ],
+    },
     {
       id: "electricity",
       alignment: "left",
@@ -294,7 +453,6 @@ var config = {
         { layer: "electricity", opacity: 0, duration: 300 },
       ],
     },
- 
     {
       id: "electricityPrice1",
       alignment: "left",
@@ -325,7 +483,6 @@ var config = {
         { layer: "price", opacity: 0, duration: 300 },
       ],
     },
-
     {
       id: "electricityPrice2",
       alignment: "full",
@@ -356,7 +513,6 @@ var config = {
         { layer: "price", opacity: 0, duration: 300 },
       ],
     },
-
     {
       id: "electricityPriceCase1",
       alignment: "right",
@@ -386,7 +542,6 @@ var config = {
       onChapterExit: [
       ],
     },
-
     {
       id: "electricityPriceCase2",
       alignment: "right",
@@ -424,7 +579,6 @@ var config = {
         { layer: "price_large", opacity: 0, duration: 300 },
       ],
     },
-
     {
       id: "electricityPrice3",
       alignment: "full",
@@ -455,7 +609,6 @@ var config = {
         { layer: "price", opacity: 0, duration: 300 },
       ],
     },
-
     {
       id: "electricityPrice4",
       alignment: "full",
@@ -486,7 +639,6 @@ var config = {
         { layer: "price", opacity: 0, duration: 300 },
       ],
     },
-
     {
       id: "naturalGas",
       alignment: "left",
@@ -517,7 +669,6 @@ var config = {
         { layer: "natural_gas", opacity: 0, duration: 300 },
       ],
     },
-
     {
       id: "naturalGasPrice1",
       alignment: "left",
@@ -548,7 +699,6 @@ var config = {
         { layer: "price_natural_gas", opacity: 0, duration: 300 },
       ],
     },
-
     {
       id: "naturalGasPrice2",
       alignment: "full",
@@ -579,7 +729,6 @@ var config = {
         { layer: "price_natural_gas", opacity: 0, duration: 300 },
       ],
     },
- 
     {
       id: "naturalGasPriceCase1",
       alignment: "right",
@@ -609,7 +758,6 @@ var config = {
       onChapterExit: [
       ],
     },
-
     {
       id: "naturalGasPriceCase2",
       alignment: "right",
@@ -640,7 +788,6 @@ var config = {
         { layer: "price_natural_gas_large", opacity: 0, duration: 300 },
       ],
     },
-
     {
       id: "naturalGasPrice3",
       alignment: "full",
@@ -671,7 +818,6 @@ var config = {
         { layer: "price_natural_gas", opacity: 0, duration: 300 },
       ],
     },
-
     {
       id: "naturalGasPrice4",
       alignment: "full",
@@ -702,7 +848,6 @@ var config = {
         { layer: "price_natural_gas", opacity: 0, duration: 300 },
       ],
     },
- 
     {
       id: "naturalGasPrice4",
       alignment: "full",
